@@ -4,8 +4,34 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="GyoOXqXQXmTsWYrkA15c-1" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="" vertex="1">
-          <mxGeometry height="80" width="60" x="410" y="330" as="geometry" />
+        <mxCell id="MIYYmYh11XcZD_5x0fQg-6" edge="1" parent="1" source="MIYYmYh11XcZD_5x0fQg-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="MIYYmYh11XcZD_5x0fQg-5" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="110" />
+              <mxPoint x="230" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MIYYmYh11XcZD_5x0fQg-9" edge="1" parent="1" source="MIYYmYh11XcZD_5x0fQg-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="MIYYmYh11XcZD_5x0fQg-4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MIYYmYh11XcZD_5x0fQg-1" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/Azure_Database_PostgreSQL_Server.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="48" x="270" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="MIYYmYh11XcZD_5x0fQg-8" edge="1" parent="1" source="MIYYmYh11XcZD_5x0fQg-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="MIYYmYh11XcZD_5x0fQg-1" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MIYYmYh11XcZD_5x0fQg-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="60" width="150" x="40" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MIYYmYh11XcZD_5x0fQg-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="60" width="150" x="400" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MIYYmYh11XcZD_5x0fQg-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="60" width="150" x="40" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="MIYYmYh11XcZD_5x0fQg-10" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.kafka;" value="s" vertex="1">
+          <mxGeometry height="42" width="56.699999999999996" x="400" y="138" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
