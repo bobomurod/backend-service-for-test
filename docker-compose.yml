@@ -1,0 +1,81 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ./.env:/app/.env:ro # (read-only)
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres_tashkent
+      - DB_PASSWORD=postgres_tashkent
+      - DB_NAME=event_platform_tashkent
+      - JWT_SECRET=secret-tashkent
+      - JWT_EXPIRES_IN=48h
+      - OUTBOX_BATCH_SIZE=50
+      - CIRCUIT_BREAKER_THRESHOLD=5
+      - CIRCUIT_BREAKER_COOLDOWN_MS=30000
+      - RABBITMQ_URL=amqp://rabbit_tashkent:rabbit_tashkent@rabbitmq:5672
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:18.1-alpine
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=postgres_tashkent
+      - POSTGRES_PASSWORD=postgres_tashkent
+      - POSTGRES_DB=event_platform_tashkent
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres_tashkent']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    environment:
+      RABBITMQ_DEFAULT_USER: rabbit_tashkent
+      RABBITMQ_DEFAULT_PASS: rabbit_tashkent
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ['CMD', 'rabbitmq-diagnostics', '-q', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # pgAdmin (optional - for debugging)
+  pgadmin:
+    image: dpage/pgadmin4:9.11.0
+    ports:
+      - '8080:80'
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin_tashkent@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin_tashkent
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+  rabbitmq_data:

@@ -1,0 +1,28 @@
+
+-- EVENTS (inbox / registry)
+CREATE TABLE IF NOT EXISTS events (
+  event_id     uuid        NOT NULL,
+  company_id   text        NOT NULL,
+  entity_id    text        NOT NULL,
+  type         text        NOT NULL,
+  source       text        NOT NULL,
+  payload      jsonb       NOT NULL,
+  occurred_at  timestamptz NOT NULL,
+  created_at   timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT events_pk PRIMARY KEY (event_id)
+);
+
+-- OUTBOX
+CREATE TABLE IF NOT EXISTS outbox_events (
+  event_id     uuid        NOT NULL,
+  company_id   text        NOT NULL,
+  entity_id    text        NOT NULL,
+  type         text        NOT NULL,
+  source       text        NOT NULL,
+  payload      jsonb       NOT NULL,
+  occurred_at  timestamptz NOT NULL,
+  created_at   timestamptz NOT NULL DEFAULT now(),
+
+  CONSTRAINT outbox_events_pk PRIMARY KEY (event_id)
+);
